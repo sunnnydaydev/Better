@@ -39,6 +39,43 @@
 
 其实这是gradle插件创建方式之一所需要的步骤，这里我们并不需要创建plugin因此做到这里就能满足我们的需求了。
 
+好了做完上面三步然后同步下工程后buildSrc这个文件就变色了，除此之外main java目录也会变色。这里就可以创建文件来抽取依赖了：
+
+```kotlin
+/**
+ * 项目中要使用的依赖
+ * */
+object Dependency {
+    const val coreKtx = "androidx.core:core-ktx:1.9.0"
+    const val appcompat = "androidx.appcompat:appcompat:1.6.1"
+    const val material = "com.google.android.material:material:1.8.0"
+    const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.1.4"
+}
+
+object Test {
+    const val junit = "junit:junit:4.13.2"
+    const val ext = "androidx.test.ext:junit:1.1.5"
+    const val espressoCore = "androidx.test.espresso:espresso-core:3.5.1"
+}
+```
+
+然后app/build.gradle.kts 就可以这样引入了：
+
+```kotlin
+dependencies {
+    implementation (Dependency.coreKtx)
+    implementation (Dependency.appcompat)
+    implementation (Dependency.material)
+    implementation (Dependency.constraintlayout)
+    testImplementation (Test.junit)
+    androidTestImplementation (Test.ext)
+    androidTestImplementation (Test.espressoCore)
+}
+```
+
+
+
+
 
 
 
