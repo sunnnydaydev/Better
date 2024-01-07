@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 
 /**
@@ -23,7 +24,12 @@ abstract class BaseViewModel<VS, VE>(initViewState: VS) : ViewModel() {
     var mCurrentState = initViewState
         set(value) {
             field = value
-            uiFlow.value = value
+            Timber.d("mCurrentState1")
+            viewModelScope.launch {
+                Timber.d("mCurrentState2")
+                // 注意当emit value相同时，uiFlow的collect不会收到更新
+                uiFlow.emit(value)
+            }
         }
 
 

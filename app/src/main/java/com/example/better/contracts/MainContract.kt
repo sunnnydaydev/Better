@@ -14,5 +14,7 @@ interface MainContract {
 
     sealed class ViewEvent{
         data object Init:ViewEvent()
+
+        data object Test:ViewEvent()
     }
 }

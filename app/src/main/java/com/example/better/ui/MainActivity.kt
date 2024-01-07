@@ -23,6 +23,10 @@ class MainActivity : BaseActivity<ViewState,ViewEvent>() {
       mBinding.tvBtn.setOnClickListener {
           dispatchEvent(ViewEvent.Init)
       }
+
+        mBinding.tvBtn2.setOnClickListener {
+            dispatchEvent(ViewEvent.Test)
+        }
     }
 
     override fun onDisplayScreenAction(it: ViewAction.DisplayScreen<*>) {

@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * Create by SunnyDay /01/07 12:49:36
@@ -24,11 +25,13 @@ abstract class BaseActivity<VS, VE> : AppCompatActivity() {
             repeatOnLifecycle((Lifecycle.State.STARTED)) {
                 launch {
                     mViewModel.uiFlow.collectLatest {
+                        Timber.d("BaseActivity mViewModel.uiFlow")
                         onViewStateUpdate(it)
                     }
                 }
                 launch {
                     mViewModel.actionFlow.collect {
+                        Timber.d("BaseActivity mViewModel.actionFlow")
                         when (it) {
                             is ViewAction.DisplayScreen<*> -> onDisplayScreenAction(it)
                             is ViewAction.CloseScreen -> finish()
