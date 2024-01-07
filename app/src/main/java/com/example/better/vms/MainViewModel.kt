@@ -31,8 +31,9 @@ class MainViewModel : ViewModel() {
         mCurrentState = mCurrentState.copy(loadState = LoadState.DATA)
 
         viewModelScope.launch {
+            dispatchAction(ViewAction.ShowToast("i am a toast test1"))
             delay(1000)
-            dispatchAction(ViewAction.ShowToast("i am a toast test"))
+            dispatchAction(ViewAction.ShowToast("i am a toast test2"))
         }
     }
 

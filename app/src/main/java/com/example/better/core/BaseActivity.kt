@@ -7,6 +7,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -30,6 +31,10 @@ abstract class BaseActivity<VS, VE> : AppCompatActivity() {
                     }
                 }
                 launch {
+                    /**
+                     * 这里不用collectLatest，这里要是使用collectLatest存在先到的viewAction被后者取消的case。
+                     * 理想状态下应该不存在这种case，我们这里无任何耗时操作，来一个这里就处理了一个。
+                     */
                     mViewModel.actionFlow.collect {
                         Timber.d("BaseActivity mViewModel.actionFlow")
                         when (it) {
