@@ -6,6 +6,12 @@ object Dependency {
     const val appcompat = "androidx.appcompat:appcompat:1.6.1"
     const val material = "com.google.android.material:material:1.8.0"
     const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.1.4"
+
+    //viewModel对协程扩展封装（viewModelScope）
+    const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    // lifecycle对协程的扩展封装（lifeCycleScope）
+    const val lifeCycleKtx = "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+
 }
 
 object Test {
