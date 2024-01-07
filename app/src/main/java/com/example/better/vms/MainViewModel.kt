@@ -31,5 +31,4 @@ class MainViewModel : ViewModel() {
         }
     }
 
-
 }

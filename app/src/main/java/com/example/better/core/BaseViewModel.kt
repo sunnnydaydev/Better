@@ -32,7 +32,6 @@ abstract class BaseViewModel<VS, VE>(initViewState: VS) : ViewModel() {
      * */
     abstract fun onViewEvent(event: VE)
 
-
     /**
      * 向UI层发送action
      * */
@@ -41,5 +40,4 @@ abstract class BaseViewModel<VS, VE>(initViewState: VS) : ViewModel() {
             actionFlow.emit(action)
         }
     }
-
 }

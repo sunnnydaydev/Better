@@ -5,14 +5,14 @@ package com.example.better.core
  */
 sealed class LoadState {
     // 空数据状态，默认。
-    object EMPTY : LoadState()
+    data object EMPTY : LoadState()
 
     // 加载状态
-    object LOADING : LoadState()
+    data object LOADING : LoadState()
 
     // 加载成功状态
-    object DATA : LoadState()
+    data object DATA : LoadState()
 
     //加载失败状态
-    object ERROR : LoadState()
+    data object ERROR : LoadState()
 }
