@@ -50,5 +50,5 @@ dependencies {
     implementation (Dependency.lifeCycleKtx)
     implementation (Dependency.viewmodelKtx)
     implementation (Dependency.activityKtx)
-    implementation ("androidx.fragment:fragment-ktx:1.5.0")
+    implementation (Dependency.timber)
 }

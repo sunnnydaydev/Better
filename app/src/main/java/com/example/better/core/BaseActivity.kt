@@ -20,7 +20,6 @@ abstract class BaseActivity<VS, VE> : AppCompatActivity() {
     final override fun  onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mBinding.root)
-        initView()
         lifecycleScope.launch {
             repeatOnLifecycle((Lifecycle.State.STARTED)) {
                 launch {
@@ -29,7 +28,7 @@ abstract class BaseActivity<VS, VE> : AppCompatActivity() {
                     }
                 }
                 launch {
-                    mViewModel.actionFlow.collectLatest {
+                    mViewModel.actionFlow.collect {
                         when (it) {
                             is ViewAction.DisplayScreen<*> -> onDisplayScreenAction(it)
                             is ViewAction.CloseScreen -> finish()
@@ -39,6 +38,7 @@ abstract class BaseActivity<VS, VE> : AppCompatActivity() {
                 }
             }
         }
+        initView()
     }
 
     /**

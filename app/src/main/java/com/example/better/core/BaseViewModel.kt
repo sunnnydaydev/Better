@@ -17,6 +17,15 @@ abstract class BaseViewModel<VS, VE>(initViewState: VS) : ViewModel() {
     private val _actionFlow = MutableSharedFlow<ViewAction>()
     var actionFlow = _actionFlow
 
+    /**
+     * 向ui层刷新最新的UI状态StateFlow的value发生改变时，末端操作符会收到值的变化。
+     * */
+    var mCurrentState = initViewState
+        set(value) {
+            field = value
+            uiFlow.value = value
+        }
+
 
     /**
      * 处理UI层发来的事件

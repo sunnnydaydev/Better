@@ -8,6 +8,7 @@ import com.example.better.core.ViewAction
 import com.example.better.databinding.ActivityMainBinding
 import com.example.better.utils.BindActivity
 import com.example.better.vms.MainViewModel
+import timber.log.Timber
 
 class MainActivity : BaseActivity<ViewState,ViewEvent>() {
 
@@ -19,7 +20,9 @@ class MainActivity : BaseActivity<ViewState,ViewEvent>() {
 
 
     override fun initView() {
-
+      mBinding.tvBtn.setOnClickListener {
+          dispatchEvent(ViewEvent.Init)
+      }
     }
 
     override fun onDisplayScreenAction(it: ViewAction.DisplayScreen<*>) {
@@ -27,6 +30,6 @@ class MainActivity : BaseActivity<ViewState,ViewEvent>() {
     }
 
     override fun onViewStateUpdate(viewState: ViewState) {
-
+        Timber.d("MainActivity-onViewStateUpdate:${viewState}")
     }
 }

@@ -9,9 +9,12 @@ object Dependency {
 
     //viewModel对协程扩展封装（viewModelScope）
     const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+
     // lifecycle对协程的扩展封装（lifeCycleScope）
     const val lifeCycleKtx = "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
-    const val activityKtx =    "androidx.activity:activity-ktx:1.5.0"
+    const val activityKtx = "androidx.activity:activity-ktx:1.5.0"
+
+    const val timber = "com.jakewharton.timber:timber:4.7.1"
 
 }
 
