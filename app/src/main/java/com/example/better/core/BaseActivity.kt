@@ -17,7 +17,7 @@ abstract class BaseActivity<VS, VE> : AppCompatActivity() {
 
     protected abstract val mBinding: ViewDataBinding
     protected abstract val mViewModel: BaseViewModel<VS, VE>
-    override fun onCreate(savedInstanceState: Bundle?) {
+    final override fun  onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mBinding.root)
         initView()
