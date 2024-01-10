@@ -1,6 +1,9 @@
 package com.example.better.ui
 
 import androidx.activity.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.better.R
 import com.example.better.contracts.MainContract.*
 import com.example.better.core.BaseActivity
@@ -19,7 +22,11 @@ class MainActivity : BaseActivity<ViewState, ViewEvent>() {
     override val mViewModel by viewModels<MainViewModel>()
 
 
-    override fun initView() {}
+    override fun initView() {
+        mBinding.run {
+           // bottomNavigationView.setupWithNavController(getNavController())
+        }
+    }
 
     override fun onDisplayScreenAction(it: ViewAction.DisplayScreen<*>) {
 
@@ -28,4 +35,7 @@ class MainActivity : BaseActivity<ViewState, ViewEvent>() {
     override fun onViewStateUpdate(viewState: ViewState) {
         Timber.d("MainActivity-onViewStateUpdate:${viewState}")
     }
+
+    private fun getNavController() =
+        (supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment).navController
 }

@@ -51,4 +51,6 @@ dependencies {
     implementation (Dependency.viewmodelKtx)
     implementation (Dependency.activityKtx)
     implementation (Dependency.timber)
+    implementation (Dependency.navigationFragment)
+    implementation (Dependency.navigationUI)
 }

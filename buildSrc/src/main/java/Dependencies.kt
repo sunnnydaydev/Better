@@ -16,6 +16,11 @@ object Dependency {
 
     const val timber = "com.jakewharton.timber:timber:4.7.1"
 
+    //navigation
+    private const val nav_version = "2.5.3"
+    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    const val navigationUI = "androidx.navigation:navigation-ui-ktx:$nav_version"
+
 }
 
 object Test {

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -38,7 +39,7 @@ abstract class BaseFragment<VS, VE> : Fragment() {
     final override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         Timber.d("my-test2")
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.uiFlow.collectLatest {
@@ -49,7 +50,7 @@ abstract class BaseFragment<VS, VE> : Fragment() {
                     viewModel.actionFlow.collect {
                         when (it) {
                             is ViewAction.DisplayScreen<*> -> onDisplayScreenAction(it)
-                            is ViewAction.CloseScreen -> activity?.finish()// navigation up
+                            is ViewAction.CloseScreen -> findNavController().navigateUp()
                             is ViewAction.ShowToast -> showToast(it.msg)
                         }
                     }
