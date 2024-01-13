@@ -23,12 +23,22 @@
             app:navGraph="@navigation/nav_home"
             />
 
+        <!--
+        1、可通过itemIconTint设置颜色selector来控制选中非选中的icon tint 颜色
+        2、可通过itemTextColor设置颜色selector来控制选中非选中的text 颜色
+        3、style的labelVisibilityMode 可控制label的mode
+        4、BottomNavigationView 默认情况下选中状态图片tint为colorPrimary的颜色？
+        不支持显示原图片的颜色图吗？
+        -->
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/container"
-            app:menu="@menu/bottom_nav_menu"/>
+            app:menu="@menu/bottom_nav_menu"
+            app:itemIconTint="@color/select_bottom_icon_bg"
+            app:itemTextColor="@color/select_bottom_icon_bg"
+            style="@style/AppTheme.BottomNavigationView"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

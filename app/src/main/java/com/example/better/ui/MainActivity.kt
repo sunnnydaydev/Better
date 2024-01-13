@@ -1,8 +1,12 @@
 package com.example.better.ui
 
+import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.better.R
 import com.example.better.contracts.MainContract.*
@@ -23,9 +27,7 @@ class MainActivity : BaseActivity<ViewState, ViewEvent>() {
 
 
     override fun initView() {
-        mBinding.run {
-           // bottomNavigationView.setupWithNavController(getNavController())
-        }
+        initBottomNavigationView()
     }
 
     override fun onDisplayScreenAction(it: ViewAction.DisplayScreen<*>) {
@@ -34,6 +36,71 @@ class MainActivity : BaseActivity<ViewState, ViewEvent>() {
 
     override fun onViewStateUpdate(viewState: ViewState) {
         Timber.d("MainActivity-onViewStateUpdate:${viewState}")
+    }
+
+    /**
+     * 1、NavigationUI.setupWithNavController(bottomNavigationView, navController);
+     * 当BottomNavigationView的每个item对应独立一份导航图时这个方法就不起作用了。此时需要用如下方案实现。
+     * 2、点击对应的item navigation导航到对应的fragment中，此时则面临另外一个问题，导航图中fragment注册问题如：
+     * nav_home 想要跳转到 fragment_video,此时fragment_video也要注册到nav_home.xml 中
+     * */
+    private fun initBottomNavigationView() {
+        mBinding.run {
+            getNavController().addOnDestinationChangedListener { _: NavController,
+                                                                 destination: NavDestination,
+
+                                                                 _: Bundle? ->
+                Timber.d("addOnDestinationChangedListener label:${destination.label}")
+                Timber.d("addOnDestinationChangedListener id:${destination.id}")
+                Timber.d("addOnDestinationChangedListener fragment_video value:${R.id.fragment_video}")
+                val currentSelectedItemId = bottomNavigationView.selectedItemId
+                Timber.d("addOnDestinationChangedListener currentSelectedItemId:${currentSelectedItemId}")
+                Timber.d("addOnDestinationChangedListener nav_home:${R.id.nav_home}")
+
+                when (destination.id) {
+                    R.id.home_fragment -> {
+                        if (currentSelectedItemId != R.id.nav_home) {
+                            bottomNavigationView.selectedItemId = R.id.nav_home
+                        }
+                    }
+                    R.id.fragment_video -> {
+                        if (currentSelectedItemId != R.id.nav_video) {
+                            bottomNavigationView.selectedItemId = R.id.nav_video
+                        }
+                    }
+                    R.id.fragment_cart -> bottomNavigationView.selectedItemId = R.id.nav_cart
+                    R.id.fragment_profile -> bottomNavigationView.selectedItemId = R.id.nav_profile
+                }
+
+            }
+
+            bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+                when (item.itemId) {
+                    R.id.nav_home -> {
+                        getNavController().navigate(R.id.home_fragment)
+                        true
+                    }
+
+                    R.id.nav_video -> {
+                        getNavController().navigate(R.id.fragment_video)
+                        true
+                    }
+
+                    R.id.nav_cart -> {
+                        getNavController().navigate(R.id.fragment_cart)
+                        true
+                    }
+
+                    R.id.nav_profile -> {
+                        getNavController().navigate(R.id.fragment_profile)
+                        true
+                    }
+
+                    else -> false
+                }
+            }
+        }
+
     }
 
     private fun getNavController() =

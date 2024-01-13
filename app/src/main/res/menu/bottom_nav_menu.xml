@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:checked="true"
         android:id="@+id/nav_home"
         android:title="首页"
         android:icon="@drawable/img_home_normal"/>

@@ -11,4 +11,10 @@
         android:name="com.example.better.ui.fragments.HomeFragment"
         tools:layout="@layout/fragment_home"/>
 
+    <fragment
+        android:id="@+id/fragment_video"
+        tools:layout="@layout/fragment_video"
+        android:label="VideoFragment"
+        android:name="com.example.better.ui.fragments.VideoFragment"/>
+
 </navigation>
