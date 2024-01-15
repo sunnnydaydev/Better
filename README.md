@@ -310,6 +310,7 @@ class MainActivity : BaseActivity<ViewState,ViewEvent>() {
 
 ###### 3、二者的联动
 
+
 ```kotlin
 NavigationUI.setupWithNavController(bottomNavigationView, navController)
 ```
@@ -349,6 +350,10 @@ NavigationUI提供了一个方法我们只需简单调用下就可以实现二�
         }
     }
 ```
+
+todo 有bug 参考这个试试：
+
+https://blog.csdn.net/u014038624/article/details/107833037
 
 ###### 4、导航图的copy优化
 

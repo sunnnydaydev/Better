@@ -1,6 +1,7 @@
 package com.example.better.ui
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -46,61 +47,9 @@ class MainActivity : BaseActivity<ViewState, ViewEvent>() {
      * */
     private fun initBottomNavigationView() {
         mBinding.run {
-            getNavController().addOnDestinationChangedListener { _: NavController,
-                                                                 destination: NavDestination,
-
-                                                                 _: Bundle? ->
-                Timber.d("addOnDestinationChangedListener label:${destination.label}")
-                Timber.d("addOnDestinationChangedListener id:${destination.id}")
-                Timber.d("addOnDestinationChangedListener fragment_video value:${R.id.fragment_video}")
-                val currentSelectedItemId = bottomNavigationView.selectedItemId
-                Timber.d("addOnDestinationChangedListener currentSelectedItemId:${currentSelectedItemId}")
-                Timber.d("addOnDestinationChangedListener nav_home:${R.id.nav_home}")
-
-                when (destination.id) {
-                    R.id.home_fragment -> {
-                        if (currentSelectedItemId != R.id.nav_home) {
-                            bottomNavigationView.selectedItemId = R.id.nav_home
-                        }
-                    }
-                    R.id.fragment_video -> {
-                        if (currentSelectedItemId != R.id.nav_video) {
-                            bottomNavigationView.selectedItemId = R.id.nav_video
-                        }
-                    }
-                    R.id.fragment_cart -> bottomNavigationView.selectedItemId = R.id.nav_cart
-                    R.id.fragment_profile -> bottomNavigationView.selectedItemId = R.id.nav_profile
-                }
-
-            }
-
-            bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-                when (item.itemId) {
-                    R.id.nav_home -> {
-                        getNavController().navigate(R.id.home_fragment)
-                        true
-                    }
-
-                    R.id.nav_video -> {
-                        getNavController().navigate(R.id.fragment_video)
-                        true
-                    }
-
-                    R.id.nav_cart -> {
-                        getNavController().navigate(R.id.fragment_cart)
-                        true
-                    }
-
-                    R.id.nav_profile -> {
-                        getNavController().navigate(R.id.fragment_profile)
-                        true
-                    }
-
-                    else -> false
-                }
-            }
+           // bottomNavigationView.setupWithNavController(getNavController())
+            NavigationUI.setupWithNavController(bottomNavigationView, getNavController())
         }
-
     }
 
     private fun getNavController() =
