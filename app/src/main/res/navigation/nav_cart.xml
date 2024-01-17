@@ -3,13 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_cart"
-    app:startDestination="@id/fragment_cart">
+    app:startDestination="@+id/fragment_cart">
 
     <fragment
         android:id="@+id/fragment_cart"
         android:name="com.example.better.ui.fragments.CartFragment"
         android:label="CartFragment"
-        tools:layout="@layout/fragment_cart"
-        />
+        tools:layout="@layout/fragment_cart" />
 
 </navigation>

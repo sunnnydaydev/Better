@@ -310,59 +310,67 @@ class MainActivity : BaseActivity<ViewState,ViewEvent>() {
 
 ###### 3、二者的联动
 
-
 ```kotlin
-NavigationUI.setupWithNavController(bottomNavigationView, navController)
+ bottomNavigationView.setupWithNavController(getNavController())
+
+private fun getNavController() =
+    (supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment).navController
 ```
 
-NavigationUI提供了一个方法我们只需简单调用下就可以实现二者的联动了，即切换tab会自动切换对应的页面。但多导航图情况下不适用我们应当手动处理点击事件。
+代码很简单，在搞这个时自己碰到了一个crash的坑，瞅了半天：
 
-```kotlin
-    /**
-     * 1、NavigationUI.setupWithNavController(bottomNavigationView, navController);
-     * 当BottomNavigationView的每个item对应独立一份导航图时这个方法就不起作用了。此时需要用如下方案实现。
-     * 2、点击对应的item navigation导航到对应的fragment中，此时则面临另外一个问题，导航图中fragment注册问题如：
-     * nav_home 想要跳转到 fragment_video,此时fragment_video也要注册到nav_home.xml 中
-     * */
-    private fun initBottomNavigationView(){
-        mBinding.run {
-            bottomNavigationView.setOnNavigationItemSelectedListener{ item ->
-                when(item.itemId){
-                    R.id.nav_home ->{
-                        getNavController().navigate(R.id.home_fragment)
-                        true
-                    }
-                    R.id.nav_video ->{
-                        getNavController().navigate(R.id.fragment_video)
-                        true
-                    }
-                    R.id.nav_cart ->{
-                        getNavController().navigate(R.id.fragment_cart)
-                        true
-                    }
-                    R.id.nav_profile ->{
-                        getNavController().navigate(R.id.fragment_profile)
-                        true
-                    }
-                    else -> false
-                }
-            }
-        }
-    }
+```xml
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/container"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:defaultNavHost="true"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight = "1"
+            app:navGraph="@navigation/nav_graph"
+            />
 ```
 
-todo 有bug 参考这个试试：
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/nav_home">
 
-https://blog.csdn.net/u014038624/article/details/107833037
+    <!-- 发现个坑，graph内的startDestination 一定要用@+的方式引用方式如nav_home内：
+    app:startDestination="@+id/fragment_home"
+    若是这种写法：频繁切换几次tab必crash
+    @id/fragment_home
+    -->
+
+    <include app:graph="@navigation/nav_home" />
+    <include app:graph="@navigation/nav_video" />
+    <include app:graph="@navigation/nav_cart" />
+    <include app:graph="@navigation/nav_profile" />
+
+</navigation>
+```
+
+
 
 ###### 4、导航图的copy优化
 
-在上述3中我们可能会碰到一个问题，假如想要从fragmentA 跳转到fragmentB，那么fragmentB一定要注册到fragmentA 所在的导航图中。
+我们可能会碰到一个问题，假如想要从fragmentA 跳转到fragmentB，那么fragmentB一定要注册到fragmentA 所在的导航图中。
 
 这就产生了一些列的重复步骤，我们可能需要把新创建的fragmentX注册到每一份导航图中。此时注册一份，然后重复copy是一种方案，但是我们有
 自动化的方案，gradle 编译期自动操作。
 
 todo
+
+
+###### 5、参考
+
+官方提供了多任务栈的实现sample具体可参考官方code
+
+(NavigationAdvancedSample)(https://github.com/android/architecture-components-samples/tree/master/NavigationAdvancedSample)
+
+# New
 
 
 

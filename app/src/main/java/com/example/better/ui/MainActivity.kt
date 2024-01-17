@@ -28,7 +28,9 @@ class MainActivity : BaseActivity<ViewState, ViewEvent>() {
 
 
     override fun initView() {
-        initBottomNavigationView()
+        mBinding.run {
+            bottomNavigationView.setupWithNavController(getNavController())
+        }
     }
 
     override fun onDisplayScreenAction(it: ViewAction.DisplayScreen<*>) {
@@ -39,18 +41,6 @@ class MainActivity : BaseActivity<ViewState, ViewEvent>() {
         Timber.d("MainActivity-onViewStateUpdate:${viewState}")
     }
 
-    /**
-     * 1、NavigationUI.setupWithNavController(bottomNavigationView, navController);
-     * 当BottomNavigationView的每个item对应独立一份导航图时这个方法就不起作用了。此时需要用如下方案实现。
-     * 2、点击对应的item navigation导航到对应的fragment中，此时则面临另外一个问题，导航图中fragment注册问题如：
-     * nav_home 想要跳转到 fragment_video,此时fragment_video也要注册到nav_home.xml 中
-     * */
-    private fun initBottomNavigationView() {
-        mBinding.run {
-           // bottomNavigationView.setupWithNavController(getNavController())
-            NavigationUI.setupWithNavController(bottomNavigationView, getNavController())
-        }
-    }
 
     private fun getNavController() =
         (supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment).navController
