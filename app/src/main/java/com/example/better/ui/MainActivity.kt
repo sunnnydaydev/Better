@@ -3,6 +3,7 @@ package com.example.better.ui
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
@@ -14,10 +15,13 @@ import com.example.better.contracts.MainContract.*
 import com.example.better.core.BaseActivity
 import com.example.better.core.ViewAction
 import com.example.better.databinding.ActivityMainBinding
+import com.example.better.repo.HomeRepository
 import com.example.better.utils.BindActivity
 import com.example.better.vms.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ViewState, ViewEvent>() {

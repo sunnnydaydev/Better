@@ -20,8 +20,9 @@ class HomeFragmentViewModel @Inject constructor() : HomeFragmentContract.ViewMod
     lateinit var repository: HomeRepository
 
     init {
-        // 留个bug：这样会crash
-       // Timber.d("HomeFragmentViewModel->${repository.localDataSource.getLocalData()}")
+        // 留个bug：这样会crash，而开个viewModelScope就不会crash。或者通过构造注入也不会crash。
+        // Timber.d("HomeFragmentViewModel->${repository.localDataSource.getLocalData()}")
+        // 结论：Hilt setter注入的字段 不能直接通过init调用。需要延迟调用或者在对应的Scope组件中调用。
         viewModelScope.launch {
             Timber.d("HomeFragmentViewModel->${repository.localDataSource.getLocalData()}")
         }
