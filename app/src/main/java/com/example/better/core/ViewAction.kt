@@ -7,8 +7,8 @@ package com.example.better.core
 sealed class ViewAction {
     data class DisplayScreen<T>(val screen: T) : ViewAction()
 
-    data object CloseScreen : ViewAction()
+    object CloseScreen : ViewAction()
 
-   data class ShowToast(val msg: String) : ViewAction()
+    data class ShowToast(val msg: String) : ViewAction()
 
 }

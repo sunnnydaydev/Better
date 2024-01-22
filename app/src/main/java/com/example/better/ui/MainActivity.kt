@@ -16,8 +16,10 @@ import com.example.better.core.ViewAction
 import com.example.better.databinding.ActivityMainBinding
 import com.example.better.utils.BindActivity
 import com.example.better.vms.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ViewState, ViewEvent>() {
 
     override val mBinding: ActivityMainBinding by BindActivity(R.layout.activity_main)

@@ -1,11 +1,14 @@
 package com.example.better
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
 /**
  * Create by SunnyDay /01/07 17:29:31
  */
+
+@HiltAndroidApp
 class BetterApplication : Application() {
     override fun onCreate() {
         super.onCreate()

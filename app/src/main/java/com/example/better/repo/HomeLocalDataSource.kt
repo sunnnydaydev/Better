@@ -1,0 +1,18 @@
+package com.example.better.repo
+
+import javax.inject.Inject
+
+/**
+ * Create by SunnyDay /01/22 21:56:49
+ */
+class HomeLocalDataSource {
+    fun getLocalData() = "{\n" +
+            "  \"banners\": [\n" +
+            "    \"https://img.alicdn.com/imgextra/i3/6000000001077/O1CN01uD9prl1JpJTtFQN5f_!!6000000001077-0-octopus.jpg\",\n" +
+            "    \"https://img.alicdn.com/imgextra/i3/6000000006495/O1CN012hA3wh1xqlMnX1MYW_!!6000000006495-0-octopus.jpg\",\n" +
+            "    \"https://img.alicdn.com/imgextra/i4/6000000003910/O1CN01lvrxue1ekpXKFHnGx_!!6000000003910-0-octopus.jpg\",\n" +
+            "    \"https://img.alicdn.com/imgextra/i3/6000000001550/O1CN015gKe3N1NJwokezEkY_!!6000000001550-0-octopus.jpg\",\n" +
+            "    \"https://img.alicdn.com/imgextra/i3/6000000007405/O1CN01P3XWFh24ZXmmzb7OO_!!6000000007405-0-octopus.jpg\",\n" +
+            "  ]\n" +
+            "}"
+}

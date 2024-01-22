@@ -14,12 +14,17 @@ object Dependency {
     const val lifeCycleKtx = "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
     const val activityKtx = "androidx.activity:activity-ktx:1.5.0"
 
+    // log lib
     const val timber = "com.jakewharton.timber:timber:4.7.1"
 
     //navigation
     private const val nav_version = "2.5.3"
     const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:$nav_version"
     const val navigationUI = "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // hilt
+    const val hiltAndroid = "com.google.dagger:hilt-android:2.48"
+    const val hiltCompiler = "com.google.dagger:hilt-android-compiler:2.48"
 
 }
 

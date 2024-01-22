@@ -13,8 +13,8 @@ interface MainContract {
     data class ViewState(val loadState: LoadState = LoadState.EMPTY)
 
     sealed class ViewEvent{
-        data object Init:ViewEvent()
+         object Init:ViewEvent()
 
-        data object Test:ViewEvent()
+         object Test:ViewEvent()
     }
 }
