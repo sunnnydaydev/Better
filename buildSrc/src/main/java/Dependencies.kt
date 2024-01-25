@@ -8,7 +8,7 @@ object Dependency {
     const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.1.4"
 
     //viewModel对协程扩展封装（viewModelScope）
-    const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
 
     // lifecycle对协程的扩展封装（lifeCycleScope）
     const val lifeCycleKtx = "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
@@ -25,6 +25,11 @@ object Dependency {
     // hilt
     const val hiltAndroid = "com.google.dagger:hilt-android:2.48"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:2.48"
+
+    // RecyclerView adapter lib
+    const val reclaim = "com.github.fueled:reclaim:2.1.1"
+
+
 
 }
 

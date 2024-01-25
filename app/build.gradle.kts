@@ -50,13 +50,14 @@ dependencies {
     androidTestImplementation (Test.ext)
     androidTestImplementation (Test.espressoCore)
     implementation (Dependency.lifeCycleKtx)
-    implementation (Dependency.viewmodelKtx)
+    implementation (Dependency.viewModelKtx)
     implementation (Dependency.activityKtx)
     implementation (Dependency.timber)
     implementation (Dependency.navigationFragment)
     implementation (Dependency.navigationUI)
     implementation (Dependency.hiltAndroid)
     kapt (Dependency.hiltCompiler)
+    implementation(Dependency.reclaim)
 }
 
 // Allow references to generated code

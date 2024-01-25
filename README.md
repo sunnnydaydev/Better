@@ -8,17 +8,18 @@
 
 为啥要写这个project呢？近一年来通过自学或者公司的项目了解到了一些jetpack的知识，想借此来练习下，综合运用下。
 
-###### 3、主要技术
+###### 3、三方库与技术
 
-- MVI架构
-- Hilt
-- Flow
-- coroutines
+- MVI架构 ✅
+- Hilt ✅
+- Flow ✅
+- coroutines ✅
 - okHttp+retrofit
-- glide
+- Glide
 - DataBinding
-- Navigation
-- RecyclerView Item 三方库
+- Navigation + BottomNavigationView ✅
+- Reclaim ✅
+- Banner 
 - 待续...
 
 # 设计&采坑
