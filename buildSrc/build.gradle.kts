@@ -12,10 +12,6 @@ plugins {
  * */
 buildscript {
     repositories {
-//        maven { url = uri("https://maven.aliyun.com/repository/jcenter") }
-//        maven { url = uri("https://maven.aliyun.com/repository/google") }
-//        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
-//        maven { url = uri("https://maven.aliyun.com/repository/public") }
         google()
         mavenCentral()
     }
@@ -26,10 +22,6 @@ buildscript {
  * 配置gradle构建脚本使用的仓库
  * */
 repositories {
-//    maven("https://maven.aliyun.com/repository/jcenter")
-//    maven("https://maven.aliyun.com/repository/google")
-//    maven("https://maven.aliyun.com/repository/gradle-plugin")
-//    maven("https://maven.aliyun.com/repository/public")
     google()
     mavenCentral()
     gradlePluginPortal()

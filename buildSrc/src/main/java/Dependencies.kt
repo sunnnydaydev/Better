@@ -1,15 +1,22 @@
+import extensions.implementation
+import extensions.kapt
+import extensions.testImplementation
+import extensions.androidTestImplementation
+import org.gradle.api.artifacts.dsl.DependencyHandler
+
 /**
  * 项目中要使用的依赖
  * */
 object Dependency {
-    const val coreKtx = "androidx.core:core-ktx:1.9.0"
+    // default lib 创建项目默认附带的库
     const val appcompat = "androidx.appcompat:appcompat:1.6.1"
     const val material = "com.google.android.material:material:1.8.0"
     const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.1.4"
 
+    // kts lib
+    const val coreKtx = "androidx.core:core-ktx:1.9.0"
     //viewModel对协程扩展封装（viewModelScope）
     const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
-
     // lifecycle对协程的扩展封装（lifeCycleScope）
     const val lifeCycleKtx = "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
     const val activityKtx = "androidx.activity:activity-ktx:1.5.0"
@@ -29,8 +36,6 @@ object Dependency {
     // RecyclerView adapter lib
     const val reclaim = "com.github.fueled:reclaim:2.1.1"
 
-
-
 }
 
 object Test {
@@ -38,3 +43,34 @@ object Test {
     const val ext = "androidx.test.ext:junit:1.1.5"
     const val espressoCore = "androidx.test.espresso:espresso-core:3.5.1"
 }
+
+
+fun DependencyHandler.defaultLib(){
+    implementation (Dependency.appcompat)
+    implementation (Dependency.material)
+    implementation (Dependency.constraintlayout)
+}
+
+fun DependencyHandler.ktxLib(){
+    implementation (Dependency.coreKtx)
+    implementation (Dependency.lifeCycleKtx)
+    implementation (Dependency.viewModelKtx)
+    implementation (Dependency.activityKtx)
+}
+
+fun DependencyHandler.navigationLib(){
+    implementation (Dependency.navigationFragment)
+    implementation (Dependency.navigationUI)
+}
+
+fun DependencyHandler.hiltLib(){
+    implementation (Dependency.hiltAndroid)
+    kapt (Dependency.hiltCompiler)
+}
+
+fun DependencyHandler.testLib(){
+    testImplementation (Test.junit)
+    androidTestImplementation (Test.ext)
+    androidTestImplementation (Test.espressoCore)
+}
+
