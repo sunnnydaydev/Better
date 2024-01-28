@@ -41,6 +41,13 @@ android {
     }
 }
 
+
+task("copyCommonNavigationGraph"){
+        println("copyCommonNavigationGraph:start")
+        // todo 实现nav file copy 建议使用Python做
+        println("copyCommonNavigationGraph:end")
+}
+
 dependencies {
     // group lib
     defaultLib()
