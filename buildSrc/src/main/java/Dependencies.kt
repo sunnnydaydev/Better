@@ -36,6 +36,12 @@ object Dependency {
     // RecyclerView adapter lib
     const val reclaim = "com.github.fueled:reclaim:2.1.1"
 
+    // banner
+    const val banner = "io.github.youth5201314:banner:2.2.3"
+
+    // kotlin serialization
+    const val kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1"
+
 }
 
 object Test {

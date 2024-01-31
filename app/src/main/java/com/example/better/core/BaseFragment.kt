@@ -90,4 +90,11 @@ abstract class BaseFragment<VS, VE> : Fragment() {
     private fun showToast(msg: String) {
         Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
     }
+
+    /**
+     * 每个viewModel实现类实现onViewEvent方法，处理Ui层发来的event
+     * */
+    fun dispatchEvent(event: VE) {
+        viewModel.onViewEvent(event)
+    }
 }

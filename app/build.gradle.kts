@@ -3,6 +3,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -44,7 +45,7 @@ android {
 
 task("copyCommonNavigationGraph"){
         println("copyCommonNavigationGraph:start")
-        // todo 实现nav file copy 建议使用Python做
+        // todo 实现nav file copy 貌似使用python更方便
         println("copyCommonNavigationGraph:end")
 }
 
@@ -59,6 +60,8 @@ dependencies {
     // single lib
     implementation (Dependency.timber)
     implementation(Dependency.reclaim)
+    implementation(Dependency.banner)
+    implementation(Dependency.kotlinSerialization)
 }
 
 // Allow references to generated code

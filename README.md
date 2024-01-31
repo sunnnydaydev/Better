@@ -18,7 +18,7 @@
 - coroutines ✅
 - okHttp+retrofit
 - Glide
-- DataBinding
+- DataBinding ✅
 - Navigation + BottomNavigationView ✅
 - Reclaim ✅
 - Banner 
