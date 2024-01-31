@@ -15,13 +15,13 @@
 - MVI架构 ✅
 - Hilt ✅
 - Flow ✅
-- coroutines ✅
+- Coroutines ✅
 - okHttp+retrofit
-- Glide
+- Kotlin Serialization ✅
 - DataBinding ✅
 - Navigation + BottomNavigationView ✅
 - Reclaim ✅
-- Banner 
+- Banner ✅
 - 待续...
 
 # 设计&采坑
@@ -33,6 +33,13 @@
 [MVI架构Base类](./mds/2、MVI架构Base类.md)
 
 [Navigation与BottomNavigationView](./mds/3、Navigation与BottomNavigationView.md)
+
+todo
+
+1、recyclerView 分割线自定义实现
+
+2、Kotlin Serialization 与gson moshi对比
+
 
 
 
