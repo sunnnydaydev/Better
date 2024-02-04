@@ -18,13 +18,15 @@ import com.example.better.utils.BindFragment
 import com.example.better.vms.HomeFragmentViewModel
 import com.fueled.reclaim.ItemsViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.serialization.ExperimentalSerializationApi
 import timber.log.Timber
 import javax.inject.Inject
 
-
+@OptIn(ExperimentalSerializationApi::class)
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<ViewState, ViewEvent>() {
     override val binding: FragmentHomeBinding by BindFragment(R.layout.fragment_home)
+
     override val viewModel: BaseViewModel<ViewState, ViewEvent> by viewModels<HomeFragmentViewModel>()
     private val itemsAdapter = ItemsViewAdapter()
 
