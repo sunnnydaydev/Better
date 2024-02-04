@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.better.R
+import com.example.better.bindingmodel.HomeFragmentBindingModel
 import com.example.better.contracts.HomeFragmentContract.*
 import com.example.better.core.BaseFragment
 import com.example.better.core.BaseViewModel
@@ -29,15 +30,11 @@ class HomeFragment : BaseFragment<ViewState, ViewEvent>() {
 
     override val viewModel: BaseViewModel<ViewState, ViewEvent> by viewModels<HomeFragmentViewModel>()
     private val itemsAdapter = ItemsViewAdapter()
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private val mModel by lazy { HomeFragmentBindingModel() }
 
     override fun initView() {
         binding.run {
+            model = mModel
             toolbarContainer.toolbar.setNavigationOnClickListener {
                 //findNavController().navigateUp() 栈顶就不能继续pop了
                 requireActivity().finish()
